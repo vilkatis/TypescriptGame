@@ -48,7 +48,7 @@ export class Renderer {
 
     public static initCanvas(): void {
         this.resizeCanvas();
-        this._gl.viewport(0, 0, this._canvas.width, this._canvas.height);
+        this._gl.viewport(-1, 1, 1, -1);
         this._gl.clearColor(0, 0, 0, 1);
         this._gl.clear(this._gl.COLOR_BUFFER_BIT);
     }
@@ -56,5 +56,6 @@ export class Renderer {
     public static resizeCanvas(): void {
         this._canvas.width = window.innerWidth;
         this._canvas.height = window.innerHeight;
+        this._gl.viewport(-1, 1, 1, -1);
     }
 }
