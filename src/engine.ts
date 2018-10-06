@@ -3,13 +3,13 @@
  */
 import { Renderer } from './core/gl/renderer';
 import { Shader } from './core/gl/shader';
-import { Buffer } from './core/gl/buffer';
-import { IAttributeInfo } from './core/gl/buffer';
+import { Sprite } from './core/graphics/sprite';
 
 export class Engine {
     private _shader: Shader;
 
-    private _buffer: Buffer;
+    private _sprite: Sprite;
+
 
 
     /**
@@ -28,7 +28,9 @@ export class Engine {
         this._loadShaders();
         this._shader.use();
 
-        this._createBuffer();
+        // Load
+        this._sprite = new Sprite('test');
+        this._sprite.load();
 
         this.resize();
         this._loop();
@@ -45,33 +47,10 @@ export class Engine {
         let colorPosition = this._shader.getUniformLocation('u_color');
         Renderer.gl.uniform4f(colorPosition, 1, 0.5, 0, 1);
 
-        this._buffer.bind();
-        this._buffer.draw();
+        this._sprite.draw();
+
 
         requestAnimationFrame(this._loop.bind(this));
-    }
-
-    private _createBuffer(): void {
-        this._buffer = new Buffer(3);
-
-        let positionAttribute: IAttributeInfo = {
-            location: this._shader.getAttributeLocation('a_position'),
-            offset: 0,
-            size: 3
-        };
-
-        this._buffer.addAttributeLocation(positionAttribute);
-
-        let vertices = [
-            // x, y, z
-            0, 0, 0,
-            0, 0.5, 0,
-            0.5, 0.5, 0
-        ];
-
-        this._buffer.pushBackData(vertices);
-        this._buffer.upload();
-        this._buffer.unbind();
     }
 
     private _loadShaders(): void {

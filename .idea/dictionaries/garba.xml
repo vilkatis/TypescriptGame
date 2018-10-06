@@ -3,6 +3,7 @@
     <words>
       <w>onload</w>
       <w>onresize</w>
+      <w>shaders</w>
     </words>
   </dictionary>
 </component>
