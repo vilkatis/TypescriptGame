@@ -4,6 +4,7 @@ import { Vector3 } from '../math/vector3';
 
 export class Sprite {
     public position: Vector3 = new Vector3();
+
     private readonly _name: string;
     private readonly _width: number;
     private readonly _height: number;

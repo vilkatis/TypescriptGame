@@ -29,14 +29,6 @@ export class Renderer {
             document.body.append(this._canvas);
         }
 
-        this._canvas.style.position = 'absolute';
-        this._canvas.style.width = '100vw';
-        this._canvas.style.height = '100vh';
-        this._canvas.style.top = '0';
-        this._canvas.style.bottom = '0';
-        this._canvas.style.left = '0';
-        this._canvas.style.right = '0';
-
         this._gl = this._canvas.getContext('webgl');
         if (!this._gl) {
             throw new Error('Unable to initialize WebGL');
@@ -48,7 +40,6 @@ export class Renderer {
 
     public static initCanvas(): void {
         this.resizeCanvas();
-        this._gl.viewport(-1, 1, 1, -1);
         this._gl.clearColor(0, 0, 0, 1);
         this._gl.clear(this._gl.COLOR_BUFFER_BIT);
     }
@@ -56,6 +47,6 @@ export class Renderer {
     public static resizeCanvas(): void {
         this._canvas.width = window.innerWidth;
         this._canvas.height = window.innerHeight;
-        this._gl.viewport(-1, 1, 1, -1);
+        this._gl.viewport(0, 0, this.canvas.width, this.canvas.height)
     }
 }

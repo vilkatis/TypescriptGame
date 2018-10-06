@@ -29,7 +29,8 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            title: 'Typescript Game Engine'
+            title: 'Typescript Game Engine',
+            template: 'index.html'
         })
     ],
     devServer: {

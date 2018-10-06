@@ -32,10 +32,11 @@ export class Engine {
         this._shader.use();
 
         // Load
-        this._projection = Matrix4x4.orthographic(0,Renderer.canvas.width, 0, Renderer.canvas.height, -1.0, 100.0);
+        this._projection = Matrix4x4.orthographic(0,Renderer.canvas.width, 0, Renderer.canvas.height, -100.0, 100.0);
 
         this._sprite = new Sprite('test');
         this._sprite.load();
+        this._sprite.position.x = 200;
 
         this.resize();
         this._loop();
@@ -43,6 +44,7 @@ export class Engine {
 
     public resize() {
         Renderer.resizeCanvas();
+        this._projection = Matrix4x4.orthographic(0,Renderer.canvas.width, 0, Renderer.canvas.height, -100.0, 100.0);
     }
 
     private _loop(): void {
@@ -54,6 +56,9 @@ export class Engine {
 
         let projectionPosition = this._shader.getUniformLocation('u_projection');
         Renderer.gl.uniformMatrix4fv(projectionPosition, false, new Float32Array(this._projection.data));
+
+        let modelPosition = this._shader.getUniformLocation('u_model');
+        Renderer.gl.uniformMatrix4fv(modelPosition, false, new Float32Array(Matrix4x4.translation(this._sprite.position).data));
 
         this._sprite.draw();
 
@@ -69,7 +74,7 @@ export class Engine {
             uniform mat4 u_model;
 
             void main() {
-                gl_Position = u_projection * vec4(a_position, 1.0);
+                gl_Position = u_projection * u_model * vec4(a_position, 1.0);
             }`;
 
         let fragmentShaderSource = `

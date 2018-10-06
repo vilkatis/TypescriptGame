@@ -5,10 +5,10 @@ export class Matrix4x4 {
 
     private constructor() {
         this._data = [
-            1, 0, 0, 0,
-            0, 1, 0, 0,
-            0, 0, 1, 0,
-            0, 0, 0, 1
+            1.0, 0, 0, 0,
+            0, 1.0, 0, 0,
+            0, 0, 1.0, 0,
+            0, 0, 0, 1.0
         ];
     }
 
@@ -22,6 +22,7 @@ export class Matrix4x4 {
 
     public static orthographic(left: number, right: number, bottom: number, top: number, nearClip: number, farClip: number): Matrix4x4 {
         let m: Matrix4x4 = new Matrix4x4();
+
         let lr: number = 1.0 / (left - right);
         let bt: number = 1.0 / (bottom - top);
         let nf: number = 1.0 / (nearClip - farClip);
