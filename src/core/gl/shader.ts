@@ -2,12 +2,14 @@
  * Renderer Shader
  */
 import { Renderer } from './renderer';
+import { IDictionary } from '../models/IDictionary';
 
 export class Shader {
 
     private readonly _name: string;
     private _program: WebGLProgram;
-    private _attributes: { [name: string]: number } = {};
+    private _attributes: IDictionary<number> = {};
+    private _uniforms: IDictionary<WebGLUniformLocation> = {};
 
     /**
      * Creates a new shader.
@@ -23,6 +25,7 @@ export class Shader {
         this._createProgram(vertexShader, fragmentShader);
 
         this._detectAttributes();
+        this._detectUniforms();
     }
 
     /**
@@ -48,6 +51,17 @@ export class Shader {
             throw new Error(`Unable to find attribute named ${name} in shader name ${this._name}`);
         }
         return this._attributes[name];
+    }
+
+    /**
+     * Gets the location of a uniform with the provided name.
+     * @param name The name of the attribute whose location to retrieve.
+     */
+    public getUniformLocation(name :string ): WebGLUniformLocation {
+        if (this._uniforms[name] === undefined) {
+            throw new Error(`Unable to find attribute named ${name} in shader name ${this._name}`);
+        }
+        return this._uniforms[name];
     }
 
     protected load(vertexSource: string, fragmentSource: string): void {
@@ -94,6 +108,17 @@ export class Shader {
                 break;
             }
             this._attributes[info.name] = Renderer.gl.getAttribLocation(this._program, info.name );
+        }
+    }
+
+    private _detectUniforms(): void {
+        let uniformCount: number = Renderer.gl.getProgramParameter(this._program, Renderer.gl.ACTIVE_UNIFORMS);
+        for (let i = 0; i < uniformCount; ++i) {
+            let info: WebGLActiveInfo = Renderer.gl.getActiveUniform(this._program, i);
+            if (!info) {
+                break;
+            }
+            this._uniforms[info.name] = Renderer.gl.getUniformLocation(this._program, info.name );
         }
     }
 }
