@@ -2,28 +2,52 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
+const SRC = path.resolve(__dirname, 'src');
+const DIST = path.resolve(__dirname, 'dist');
+
 module.exports = {
-    entry: './src/index.ts',
+    mode: 'development',
+    context: SRC,
+    entry: {
+        index: './index.ts'
+    },
+    output: {
+        filename: '[name].bundle.js',
+        path: DIST,
+        publicPath: '/'
+    },
+    resolve: {
+        extensions: [ '.ts', '.js', '.json']
+    },
     module: {
         rules: [
             {
-                test: /\.ts?$/,
-                use: 'ts-loader',
-                exclude: '/node-modules/'
-            }
+                test: /\.ts$/,
+                loaders: [ 'awesome-typescript-loader' ]
+            },
         ]
     },
-    resolve: {
-        extensions: ['.ts', '.js']
-    },
     plugins: [
-        new CleanWebpackPlugin(['dist']),
         new HtmlWebpackPlugin({
-            title: 'Output Management'
+            title: 'Typescript Game Engine'
         })
     ],
-    output: {
-        filename: '[name].bundle.js',
-        path: path.resolve(__dirname, 'dist')
-    }
+    devServer: {
+        port: 8000,
+        contentBase: DIST,
+        compress: true,
+
+        quiet: false,
+        noInfo: false,
+        stats: {
+            assets: false,
+            colors: true,
+            version: false,
+            hash: false,
+            timings: false,
+            chunks: false,
+            chunkModules: false
+        }
+    },
+    devtool: 'inline-source-map'
 };

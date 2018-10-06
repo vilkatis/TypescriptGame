@@ -1,9 +1,12 @@
-function component() {
-    let element = document.createElement('div');
+import { Engine } from './engine';
 
-    element.innerHTML = 'Hello';
+let engine: Engine;
 
-    return element;
-}
+window.onload = () => {
+    engine = new Engine();
+    engine.start();
+};
 
-document.body.appendChild(component());
+window.onresize = () => {
+    engine.resize();
+};

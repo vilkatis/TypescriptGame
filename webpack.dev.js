@@ -3,7 +3,11 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
-    entry: './src/app.ts',
+    entry: {
+        engine: './src/engine.ts',
+        main: './src/index.ts'
+    },
+    mode: 'development',
     devtool: 'inline-source-map',
     module: {
         rules: [
@@ -27,7 +31,6 @@ module.exports = {
         })
     ],
     output: {
-        filename: '[name].bundle.js',
         path: path.resolve(__dirname, 'dist')
     }
 };
