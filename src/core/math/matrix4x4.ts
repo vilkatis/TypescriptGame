@@ -1,3 +1,5 @@
+import { Vector3 } from './vector3';
+
 export class Matrix4x4 {
     private readonly _data: number[] = [];
 
@@ -28,9 +30,19 @@ export class Matrix4x4 {
         m._data[5] = -2.0 * bt;
         m.data[10] = 2.0 * nf;
 
-        m._data[12] = (left + top) * lr;
+        m._data[12] = (left + right) * lr;
         m._data[13] = (top + bottom) * bt;
         m._data[14] = (farClip + nearClip) * nf;
+
+        return m;
+    }
+
+    public static translation(position: Vector3): Matrix4x4 {
+        let m = new Matrix4x4();
+
+        m._data[12] = position.x;
+        m._data[13] = position.y;
+        m._data[14] = position.z;
 
         return m;
     }

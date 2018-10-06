@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b0fdf6c8-5127-4615-8427-f33113f38ed8" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/core/math/matrix4x4.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/core/math/vector3.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/core/gl/renderer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/gl/renderer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/core/graphics/sprite.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/graphics/sprite.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/engine.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/engine.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/math/matrix4x4.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/math/matrix4x4.ts" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -42,7 +37,7 @@
           <entry key="html" value="5" />
           <entry key="js" value="8" />
           <entry key="json" value="6" />
-          <entry key="ts" value="44" />
+          <entry key="ts" value="45" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
@@ -50,7 +45,7 @@
           <entry key="HTML" value="5" />
           <entry key="JSON" value="2" />
           <entry key="JavaScript" value="8" />
-          <entry key="TypeScript" value="44" />
+          <entry key="TypeScript" value="45" />
           <entry key="tsconfig" value="4" />
         </counts>
       </usages-collector>
@@ -59,7 +54,7 @@
           <entry key="dummy" value="3" />
           <entry key="js" value="374" />
           <entry key="json" value="99" />
-          <entry key="ts" value="12664" />
+          <entry key="ts" value="12845" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
@@ -67,7 +62,7 @@
           <entry key="JSON" value="40" />
           <entry key="JavaScript" value="374" />
           <entry key="PLAIN_TEXT" value="3" />
-          <entry key="TypeScript" value="12664" />
+          <entry key="TypeScript" value="12845" />
           <entry key="tsconfig" value="59" />
         </counts>
       </usages-collector>
@@ -85,7 +80,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/engine.ts">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="244">
@@ -114,6 +109,15 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1292">
               <caret line="76" column="30" lean-forward="true" selection-start-line="76" selection-start-column="30" selection-end-line="76" selection-end-column="30" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/core/math/matrix4x4.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="261">
+              <caret line="32" column="35" selection-start-line="32" selection-start-column="35" selection-end-line="32" selection-end-column="35" />
             </state>
           </provider>
         </entry>
@@ -179,11 +183,11 @@
         <option value="$PROJECT_DIR$/src/core/gl/shader.ts" />
         <option value="$PROJECT_DIR$/src/core/models/IAttributeInfo.ts" />
         <option value="$PROJECT_DIR$/src/core/gl/buffer.ts" />
-        <option value="$PROJECT_DIR$/src/core/math/matrix4x4.ts" />
         <option value="$PROJECT_DIR$/src/core/gl/renderer.ts" />
         <option value="$PROJECT_DIR$/src/core/math/vector3.ts" />
         <option value="$PROJECT_DIR$/src/core/graphics/sprite.ts" />
         <option value="$PROJECT_DIR$/src/engine.ts" />
+        <option value="$PROJECT_DIR$/src/core/math/matrix4x4.ts" />
       </list>
     </option>
   </component>
@@ -311,12 +315,12 @@
       <workItem from="1538679022477" duration="3370000" />
       <workItem from="1538750901458" duration="11632000" />
       <workItem from="1538789350564" duration="2274000" />
-      <workItem from="1538837785085" duration="11137000" />
+      <workItem from="1538837785085" duration="11300000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="39055000" />
+    <option name="totallyTimeSpent" value="39218000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -476,13 +480,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/math/matrix4x4.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="177">
-          <caret line="20" column="18" selection-start-line="20" selection-start-column="18" selection-end-line="20" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/core/gl/buffer.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
@@ -507,13 +504,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/math/vector3.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1292">
-          <caret line="76" column="30" lean-forward="true" selection-start-line="76" selection-start-column="30" selection-end-line="76" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/core/graphics/sprite.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -531,6 +521,20 @@
           <folding>
             <element signature="e#23#69#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/math/vector3.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1292">
+          <caret line="76" column="30" lean-forward="true" selection-start-line="76" selection-start-column="30" selection-end-line="76" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/math/matrix4x4.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="261">
+          <caret line="32" column="35" selection-start-line="32" selection-start-column="35" selection-end-line="32" selection-end-column="35" />
         </state>
       </provider>
     </entry>
