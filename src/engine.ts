@@ -51,13 +51,13 @@ export class Engine {
         Renderer.gl.clear(Renderer.gl.COLOR_BUFFER_BIT);
 
         // Set uniforms.
-        let colorPosition = this._shader.getUniformLocation('u_color');
+        let colorPosition: WebGLUniformLocation = this._shader.getUniformLocation('u_color');
         Renderer.gl.uniform4f(colorPosition, 1, 0.5, 0, 1);
 
-        let projectionPosition = this._shader.getUniformLocation('u_projection');
+        let projectionPosition: WebGLUniformLocation = this._shader.getUniformLocation('u_projection');
         Renderer.gl.uniformMatrix4fv(projectionPosition, false, new Float32Array(this._projection.data));
 
-        let modelPosition = this._shader.getUniformLocation('u_model');
+        let modelPosition: WebGLUniformLocation = this._shader.getUniformLocation('u_model');
         Renderer.gl.uniformMatrix4fv(modelPosition, false, new Float32Array(Matrix4x4.translation(this._sprite.position).data));
 
         this._sprite.draw();

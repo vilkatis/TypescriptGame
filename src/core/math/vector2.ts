@@ -1,22 +1,19 @@
 /**
- * 3 Component Vector
+ * 2 Component Vector
  */
-export class Vector3 {
+export class Vector2 {
 
     private _x: number;
     private _y: number;
-    private _z: number;
 
     /**
-     * Create a new Vector3
+     * Create a new Vector2
      * @param x {number} The x component.
      * @param y {number} The y component.
-     * @param z {number} The z component.
      */
-    public constructor(x: number = 0, y: number = 0, z: number = 0) {
+    public constructor(x: number = 0, y: number = 0) {
         this._x = x;
         this._y = y;
-        this._z = z;
     }
 
     /**
@@ -50,26 +47,11 @@ export class Vector3 {
     }
 
     /**
-     * Getter for z component.
-     * @returns {number}
-     */
-    public get z(): number {
-        return this._z;
-    }
-
-    /**
-     * Setter for z component.
-     */
-    public set z(z: number) {
-        this._z = z;
-    }
-
-    /**
      * Returns the data of this vector as a number array.
      * @returns {number[]}
      */
-    public toArray(): [number, number, number] {
-        return [this._x, this._y, this._z];
+    public toArray(): [number, number] {
+        return [this._x, this._y];
     }
 
     /**
