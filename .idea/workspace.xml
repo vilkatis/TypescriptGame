@@ -2,13 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b0fdf6c8-5127-4615-8427-f33113f38ed8" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/core/graphics/texture-manager.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tslint.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/core/gl/shaders/basic-shader.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/core/graphics/color.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/core/graphics/material.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/gl/shader.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/gl/shader.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/core/graphics/sprite.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/graphics/sprite.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/core/graphics/texture.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/graphics/texture.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/engine.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/engine.ts" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -99,14 +98,14 @@
         <counts>
           <entry key="js" value="42" />
           <entry key="json" value="26" />
-          <entry key="ts" value="2256" />
+          <entry key="ts" value="3317" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="JSON" value="3" />
           <entry key="JavaScript" value="42" />
-          <entry key="TypeScript" value="2256" />
+          <entry key="TypeScript" value="3317" />
           <entry key="tsconfig" value="23" />
         </counts>
       </usages-collector>
@@ -114,14 +113,14 @@
         <counts>
           <entry key="js" value="4" />
           <entry key="json" value="3" />
-          <entry key="ts" value="26" />
+          <entry key="ts" value="34" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="JSON" value="1" />
           <entry key="JavaScript" value="4" />
-          <entry key="TypeScript" value="26" />
+          <entry key="TypeScript" value="34" />
           <entry key="tsconfig" value="2" />
         </counts>
       </usages-collector>
@@ -130,32 +129,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/core/graphics/texture-manager.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="207">
-              <caret line="9" column="5" lean-forward="true" selection-start-line="9" selection-start-column="5" selection-end-line="9" selection-end-column="5" />
-              <folding>
-                <element signature="n#!!block;n#getTexture#0;n#TextureManager#0;n#Arch#0" />
-                <element signature="n#!!block;n#releaseTexture#0;n#TextureManager#0;n#Arch#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/core/graphics/sprite.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="271">
-              <caret line="37" column="39" selection-start-line="37" selection-start-column="39" selection-end-line="37" selection-end-column="39" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/engine.ts">
+        <entry file="file://$PROJECT_DIR$/src/core/gl/shaders/basic-shader.ts">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="345">
-              <caret line="47" column="12" selection-start-line="47" selection-start-column="12" selection-end-line="47" selection-end-column="12" />
+              <caret line="15" column="36" lean-forward="true" selection-start-line="15" selection-start-column="36" selection-end-line="15" selection-end-column="36" />
             </state>
           </provider>
         </entry>
@@ -163,17 +140,44 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/core/gl/shader.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="128">
-              <caret line="60" column="79" lean-forward="true" selection-start-line="60" selection-start-column="79" selection-end-line="60" selection-end-column="79" />
+            <state relative-caret-position="182">
+              <caret line="66" column="78" lean-forward="true" selection-start-line="66" selection-start-column="78" selection-end-line="66" selection-end-column="78" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/core/graphics/texture.ts">
+        <entry file="file://$PROJECT_DIR$/src/engine.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="87">
-              <caret line="68" selection-start-line="68" selection-end-line="68" />
+            <state relative-caret-position="179">
+              <caret line="50" column="28" lean-forward="true" selection-start-line="50" selection-start-column="28" selection-end-line="50" selection-end-column="28" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/core/graphics/material.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="115">
+              <caret line="5" column="29" lean-forward="true" selection-start-line="5" selection-start-column="29" selection-end-line="5" selection-end-column="29" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/core/graphics/color.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1702">
+              <caret line="74" lean-forward="true" selection-start-line="74" selection-end-line="74" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/core/graphics/sprite.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="340">
+              <caret line="79" column="54" lean-forward="true" selection-start-line="79" selection-start-column="54" selection-end-line="79" selection-end-column="54" />
             </state>
           </provider>
         </entry>
@@ -209,6 +213,7 @@
       <find>100</find>
       <find>/**</find>
       <find>//</find>
+      <find>projection</find>
       <find>v_texCoord</find>
     </findStrings>
     <replaceStrings>
@@ -229,10 +234,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/core/gl/shader.ts" />
-        <option value="$PROJECT_DIR$/src/core/models/IAsset.ts" />
-        <option value="$PROJECT_DIR$/src/core/models/IAssetLoader.ts" />
-        <option value="$PROJECT_DIR$/src/core/models/IAttributeInfo.ts" />
         <option value="$PROJECT_DIR$/src/core/models/IMessageHandler.ts" />
         <option value="$PROJECT_DIR$/src/core/models/enum/MessagePriority.ts" />
         <option value="$PROJECT_DIR$/src/core/message/message.ts" />
@@ -252,9 +253,13 @@
         <option value="$PROJECT_DIR$/src/core/assets/asset-manager.ts" />
         <option value="$PROJECT_DIR$/tslint.json" />
         <option value="$PROJECT_DIR$/src/core/graphics/texture-manager.ts" />
-        <option value="$PROJECT_DIR$/src/core/graphics/sprite.ts" />
         <option value="$PROJECT_DIR$/src/core/graphics/texture.ts" />
+        <option value="$PROJECT_DIR$/src/core/gl/shader.ts" />
+        <option value="$PROJECT_DIR$/src/core/gl/shaders/basic-shader.ts" />
+        <option value="$PROJECT_DIR$/src/core/graphics/sprite.ts" />
         <option value="$PROJECT_DIR$/src/engine.ts" />
+        <option value="$PROJECT_DIR$/src/core/graphics/material.ts" />
+        <option value="$PROJECT_DIR$/src/core/graphics/color.ts" />
       </list>
     </option>
   </component>
@@ -417,18 +422,18 @@
       <workItem from="1542584957046" duration="8910000" />
       <workItem from="1542664064562" duration="2903000" />
       <workItem from="1542735311891" duration="4355000" />
-      <workItem from="1542802929952" duration="8147000" />
+      <workItem from="1542802929952" duration="9817000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="67281000" />
+    <option name="totallyTimeSpent" value="68951000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="54" y="-8" width="1874" height="1096" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14760348" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14760348" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -440,7 +445,7 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="TypeScript" order="8" weight="0.329718" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="9" visible="true" weight="0.32017076" />
+      <window_info anchor="bottom" id="Terminal" order="9" visible="true" weight="0.32017076" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
@@ -455,27 +460,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/core/message/message-bus.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="46" selection-start-line="46" selection-end-line="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/models/IMessageHandler.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="115">
-          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/models/IAsset.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/core/math/vector2.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="92">
@@ -601,24 +585,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/graphics/sprite.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="271">
-          <caret line="37" column="39" selection-start-line="37" selection-start-column="39" selection-end-line="37" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/index.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="138">
           <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/gl/shader.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="128">
-          <caret line="60" column="79" lean-forward="true" selection-start-line="60" selection-start-column="79" selection-end-line="60" selection-end-column="79" />
         </state>
       </provider>
     </entry>
@@ -629,10 +599,45 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/engine.ts">
+    <entry file="file://$PROJECT_DIR$/src/core/gl/shader.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="182">
+          <caret line="66" column="78" lean-forward="true" selection-start-line="66" selection-start-column="78" selection-end-line="66" selection-end-column="78" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/gl/shaders/basic-shader.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="345">
-          <caret line="47" column="12" selection-start-line="47" selection-start-column="12" selection-end-line="47" selection-end-column="12" />
+          <caret line="15" column="36" lean-forward="true" selection-start-line="15" selection-start-column="36" selection-end-line="15" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/graphics/sprite.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="79" column="54" lean-forward="true" selection-start-line="79" selection-start-column="54" selection-end-line="79" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/engine.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="179">
+          <caret line="50" column="28" lean-forward="true" selection-start-line="50" selection-start-column="28" selection-end-line="50" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/graphics/material.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="5" column="29" lean-forward="true" selection-start-line="5" selection-start-column="29" selection-end-line="5" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/graphics/color.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1702">
+          <caret line="74" lean-forward="true" selection-start-line="74" selection-end-line="74" />
         </state>
       </provider>
     </entry>

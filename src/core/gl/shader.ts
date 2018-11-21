@@ -3,7 +3,7 @@ namespace Arch {
      * Renderer Shader
      */
 
-    export class Shader {
+    export abstract class Shader {
 
         private readonly _name: string;
         private _program: WebGLProgram;
@@ -13,18 +13,9 @@ namespace Arch {
         /**
          * Creates a new shader.
          * @param name {string} The name of the shader.
-         * @param vertexSource {string} The source of the vertex shader.
-         * @param fragmentSource {string} The source of the fragment shader.
          */
-        public constructor(name: string, vertexSource: string, fragmentSource: string) {
+        protected constructor(name: string) {
             this._name = name;
-            let vertexShader = this._loadShader(vertexSource, GL.VERTEX_SHADER);
-            let fragmentShader = this._loadShader(fragmentSource, GL.FRAGMENT_SHADER);
-
-            this._createProgram(vertexShader, fragmentShader);
-
-            this._detectAttributes();
-            this._detectUniforms();
         }
 
         /**
@@ -70,6 +61,7 @@ namespace Arch {
             this._createProgram(vertexShader, fragmentShader);
 
             this._detectAttributes();
+            this._detectUniforms();
         }
 
         private _loadShader(source: string, shaderType: number): WebGLShader {

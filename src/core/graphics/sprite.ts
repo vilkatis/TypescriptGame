@@ -73,6 +73,12 @@ namespace Arch {
         }
 
         public draw(shader: Shader): void {
+            let modelPosition: WebGLUniformLocation = shader.getUniformLocation('u_model');
+            GL.uniformMatrix4fv(modelPosition, false, new Float32Array(Matrix4x4.translation(this.position).data));
+
+            let colorLocation: WebGLUniformLocation = shader.getUniformLocation('u_tint');
+            GL.uniform4f(colorLocation, 1, 0.5, 0, 1);
+
             this._texture.activateAndBind(0);
             let diffuseLocation: WebGLUniformLocation = shader.getUniformLocation('u_diffuse');
             GL.uniform1i(diffuseLocation, 0);
