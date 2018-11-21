@@ -1,52 +1,38 @@
-export class Renderer {
-    private static _canvas: HTMLCanvasElement;
-    private static _gl: WebGLRenderingContext;
+namespace Arch {
+    export var GL: WebGLRenderingContext;
+    export var Canvas: HTMLCanvasElement;
 
-    public static get gl(): WebGLRenderingContext {
-        if (Renderer._gl) {
-            return Renderer._gl;
-        } else {
-            throw new Error(`Renderer was not initialized`);
-        }
-    }
-
-    public static get canvas(): HTMLCanvasElement {
-        if (Renderer._canvas) {
-            return Renderer._canvas;
-        } else {
-            throw new Error(`Renderer was not initialized`);
-        }
-    }
-
-    public static initialize(canvasId: string) {
-        if (canvasId) {
-            Renderer._canvas = <HTMLCanvasElement>document.getElementById(canvasId);
-            if (!Renderer._canvas) {
-                throw new Error(`Cannot find a canvas element with the ID: ${canvasId}`);
+    export class Renderer {
+        public static initialize(canvasId: string) {
+            if (canvasId) {
+                Canvas = <HTMLCanvasElement>document.getElementById(canvasId);
+                if (!Canvas) {
+                    throw new Error(`Cannot find a canvas element with the ID: ${canvasId}`);
+                }
+            } else {
+                Canvas = <HTMLCanvasElement>document.createElement('canvas');
+                document.body.append(Canvas);
             }
-        } else {
-            Renderer._canvas = <HTMLCanvasElement>document.createElement('canvas');
-            document.body.append(Renderer._canvas);
+
+            GL = Canvas.getContext('webgl');
+            if (!GL) {
+                throw new Error('Unable to initialize WebGL');
+            }
+
+            Renderer.initCanvas();
         }
 
-        Renderer._gl = Renderer._canvas.getContext('webgl');
-        if (!Renderer._gl) {
-            throw new Error('Unable to initialize WebGL');
+
+        public static initCanvas(): void {
+            Renderer.resizeCanvas();
+            GL.clearColor(0, 0, 0, 1);
+            GL.clear(GL.COLOR_BUFFER_BIT);
         }
 
-        Renderer.initCanvas();
-    }
-
-
-    public static initCanvas(): void {
-        Renderer.resizeCanvas();
-        Renderer._gl.clearColor(0, 0, 0, 1);
-        Renderer._gl.clear(Renderer._gl.COLOR_BUFFER_BIT);
-    }
-
-    public static resizeCanvas(): void {
-        Renderer._canvas.width = window.innerWidth;
-        Renderer._canvas.height = window.innerHeight;
-        Renderer._gl.viewport(0, 0, Renderer.canvas.width, Renderer.canvas.height)
+        public static resizeCanvas(): void {
+            Canvas.width = window.innerWidth;
+            Canvas.height = window.innerHeight;
+            GL.viewport(0, 0, Canvas.width, Canvas.height)
+        }
     }
 }

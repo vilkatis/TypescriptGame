@@ -4,6 +4,7 @@
       <w>onload</w>
       <w>onresize</w>
       <w>shaders</w>
+      <w>webgl</w>
     </words>
   </dictionary>
 </component>

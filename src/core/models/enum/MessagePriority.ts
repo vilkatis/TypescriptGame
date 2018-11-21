@@ -1,4 +1,6 @@
-export enum MessagePriority {
-    NORMAL,
-    HIGH
+namespace Arch {
+    export enum MessagePriority {
+        NORMAL,
+        HIGH
+    }
 }

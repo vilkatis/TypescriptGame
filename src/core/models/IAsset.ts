@@ -1,4 +1,6 @@
-export interface IAsset {
-    readonly name: string;
-    readonly data: any;
+namespace Arch {
+    export interface IAsset {
+        readonly name: string;
+        readonly data: any;
+    }
 }

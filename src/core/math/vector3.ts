@@ -1,82 +1,84 @@
-/**
- * 3 Component Vector
- */
-export class Vector3 {
-
-    private _x: number;
-    private _y: number;
-    private _z: number;
-
+namespace Arch {
     /**
-     * Create a new Vector3
-     * @param x {number} The x component.
-     * @param y {number} The y component.
-     * @param z {number} The z component.
+     * 3 Component Vector
      */
-    public constructor(x: number = 0, y: number = 0, z: number = 0) {
-        this._x = x;
-        this._y = y;
-        this._z = z;
-    }
+    export class Vector3 {
 
-    /**
-     * Getter for x component.
-     * @returns {number}
-     */
-    public get x(): number {
-        return this._x;
-    }
+        private _x: number;
+        private _y: number;
+        private _z: number;
 
-    /**
-     * Setter for x component.
-     */
-    public set x(x: number) {
-        this._x = x;
-    }
+        /**
+         * Create a new Vector3
+         * @param x {number} The x component.
+         * @param y {number} The y component.
+         * @param z {number} The z component.
+         */
+        public constructor(x: number = 0, y: number = 0, z: number = 0) {
+            this._x = x;
+            this._y = y;
+            this._z = z;
+        }
 
-    /**
-     * Getter for y component.
-     * @returns {number}
-     */
-    public get y(): number {
-        return this._y;
-    }
+        /**
+         * Getter for x component.
+         * @returns {number}
+         */
+        public get x(): number {
+            return this._x;
+        }
 
-    /**
-     * Setter for y component.
-     */
-    public set y(y: number) {
-        this._y = y;
-    }
+        /**
+         * Setter for x component.
+         */
+        public set x(x: number) {
+            this._x = x;
+        }
 
-    /**
-     * Getter for z component.
-     * @returns {number}
-     */
-    public get z(): number {
-        return this._z;
-    }
+        /**
+         * Getter for y component.
+         * @returns {number}
+         */
+        public get y(): number {
+            return this._y;
+        }
 
-    /**
-     * Setter for z component.
-     */
-    public set z(z: number) {
-        this._z = z;
-    }
+        /**
+         * Setter for y component.
+         */
+        public set y(y: number) {
+            this._y = y;
+        }
 
-    /**
-     * Returns the data of this vector as a number array.
-     * @returns {number[]}
-     */
-    public toArray(): [number, number, number] {
-        return [this._x, this._y, this._z];
-    }
+        /**
+         * Getter for z component.
+         * @returns {number}
+         */
+        public get z(): number {
+            return this._z;
+        }
 
-    /**
-     * Returns the data of this vector as a Float32Array.
-     * @returns {Float32Array}
-     */
-    public toFloat32Array(): Float32Array {
-        return new Float32Array(this.toArray());
+        /**
+         * Setter for z component.
+         */
+        public set z(z: number) {
+            this._z = z;
+        }
+
+        /**
+         * Returns the data of this vector as a number array.
+         * @returns {number[]}
+         */
+        public toArray(): [number, number, number] {
+            return [this._x, this._y, this._z];
+        }
+
+        /**
+         * Returns the data of this vector as a Float32Array.
+         * @returns {Float32Array}
+         */
+        public toFloat32Array(): Float32Array {
+            return new Float32Array(this.toArray());
+        }
     }
 }

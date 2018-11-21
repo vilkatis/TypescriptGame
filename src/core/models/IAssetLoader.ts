@@ -1,4 +1,7 @@
-export interface IAssetLoader {
-    readonly supportedExtensions: string[];
-    loadAsset(assetName: string): void;
+namespace Arch {
+    export interface IAssetLoader {
+        readonly supportedExtensions: string[];
+
+        loadAsset(assetName: string): void;
+    }
 }

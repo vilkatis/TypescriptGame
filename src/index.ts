@@ -1,9 +1,7 @@
-import { Engine } from './engine';
-
-let engine: Engine;
+let engine: Arch.Engine;
 
 window.onload = () => {
-    engine = new Engine();
+    engine = new Arch.Engine();
     engine.start();
 };
 

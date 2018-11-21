@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
-    "outDir": "dist",
+    "outFile": "dist/engine.js",
     "sourceMap": true,
-    "module": "commonjs",
+    "module": "amd",
     "target": "es2017",
     "noImplicitAny": true,
     "removeComments": true,
