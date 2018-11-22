@@ -1,10 +1,12 @@
 namespace Arch {
-    export abstract class Component {
+    export abstract class Component implements IComponent {
         public name: string;
         protected _owner: SimObject;
+        protected _data: IComponentData;
 
-        protected constructor(name: string) {
-            this.name = name;
+        protected constructor(data: IComponentData) {
+            this._data = data;
+            this.name = data.name;
         }
 
         public get owner(): SimObject {

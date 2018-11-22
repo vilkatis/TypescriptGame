@@ -84,10 +84,17 @@ namespace Arch {
             if (dataSection.transform !== undefined) {
                 simObject.transform.setFromJson(dataSection.transform);
             }
+            if (dataSection.components !== undefined) {
+                for (const key in dataSection.components) {
+                    const data: any = dataSection.components[key];
+                    const component: IComponent = ComponentManager.extractComponent(data);
+                    simObject.addComponent(component);
+                }
+            }
             if (dataSection.children !== undefined) {
                 for (const key in dataSection.children) {
-                    const object: any = dataSection.children[key];
-                    this._loadSimObject(object, simObject);
+                    const data: any = dataSection.children[key];
+                    this._loadSimObject(data, simObject);
                 }
             }
             if (parent !== undefined) {

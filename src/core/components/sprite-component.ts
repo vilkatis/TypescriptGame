@@ -1,9 +1,11 @@
+/// <reference path="component-manager.ts" />
+/// <reference path="sprite-component-builder.ts" />
 namespace Arch {
     export class SpriteComponent extends Component {
         private _sprite: Sprite;
-        public constructor(name: string, materialName: string) {
-            super(name);
-            this._sprite = new Sprite(name, materialName);
+        public constructor(data: SpriteComponentData) {
+            super(data);
+            this._sprite = new Sprite(name, data.materialName);
         }
 
         public load(): void {
@@ -15,4 +17,5 @@ namespace Arch {
             super.render(shader);
         }
     }
+    ComponentManager.registerBuilder(new SpriteComponentBuilder());
 }

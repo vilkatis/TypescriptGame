@@ -5,7 +5,7 @@ namespace Arch {
         private readonly _id: number;
         private _children: SimObject[] = [];
         private _scene: Scene;
-        private _components: Component[] = [];
+        private _components: IComponent[] = [];
         private _localMatrix: Matrix4x4 = Matrix4x4.identity();
         private _worldMatrix: Matrix4x4 = Matrix4x4.identity();
         private _parent: SimObject;
@@ -60,7 +60,7 @@ namespace Arch {
             return undefined;
         }
 
-        public addComponent(component: Component): void {
+        public addComponent(component: IComponent): void {
             this._components.push(component);
             component.owner = (this);
         }
