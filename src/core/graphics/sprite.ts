@@ -1,7 +1,5 @@
 namespace Arch {
     export class Sprite {
-        public position: Vector3 = new Vector3();
-
         private readonly _name: string;
         private readonly _width: number;
         private readonly _height: number;
@@ -44,7 +42,6 @@ namespace Arch {
                 offset: 0,
                 size: 3
             };
-
             this._buffer.addAttributeLocation(positionAttribute);
 
             const texCoordAttribute: IAttributeInfo = {
@@ -52,7 +49,6 @@ namespace Arch {
                 offset: 3,
                 size: 2
             };
-
             this._buffer.addAttributeLocation(texCoordAttribute);
 
             const vertices = [
@@ -73,9 +69,9 @@ namespace Arch {
         public update(time: number): void {
         }
 
-        public draw(shader: Shader): void {
+        public draw(shader: Shader, model: Matrix4x4): void {
             const modelLocation: WebGLUniformLocation = shader.getUniformLocation('u_model');
-            GL.uniformMatrix4fv(modelLocation, false, new Float32Array(Matrix4x4.translation(this.position).data));
+            GL.uniformMatrix4fv(modelLocation, false, model.toFloat32Array());
 
             const colorLocation: WebGLUniformLocation = shader.getUniformLocation('u_tint');
             GL.uniform4fv(colorLocation, this._material.tint.toFloat32Array());
