@@ -55,8 +55,8 @@ namespace Arch {
         }
 
         protected load(vertexSource: string, fragmentSource: string): void {
-            let vertexShader = this._loadShader(vertexSource, GL.VERTEX_SHADER);
-            let fragmentShader = this._loadShader(fragmentSource, GL.FRAGMENT_SHADER);
+            const vertexShader = this._loadShader(vertexSource, GL.VERTEX_SHADER);
+            const fragmentShader = this._loadShader(fragmentSource, GL.FRAGMENT_SHADER);
 
             this._createProgram(vertexShader, fragmentShader);
 
@@ -65,12 +65,11 @@ namespace Arch {
         }
 
         private _loadShader(source: string, shaderType: number): WebGLShader {
-            let shader: WebGLShader = GL.createShader(shaderType);
-
+            const shader: WebGLShader = GL.createShader(shaderType);
 
             GL.shaderSource(shader, source);
             GL.compileShader(shader);
-            let error = GL.getShaderInfoLog(shader);
+            const error = GL.getShaderInfoLog(shader);
             if (error) {
                 throw new Error(`Error compiling shader: ${error}`);
             }
@@ -85,16 +84,16 @@ namespace Arch {
 
             GL.linkProgram(this._program);
 
-            let error = GL.getProgramInfoLog(this._program);
+            const error = GL.getProgramInfoLog(this._program);
             if (error) {
                 throw new Error(`Error linking shader ${this._name}: ${error}`);
             }
         }
 
         private _detectAttributes(): void {
-            let attributeCount: number = GL.getProgramParameter(this._program, GL.ACTIVE_ATTRIBUTES);
+            const attributeCount: number = GL.getProgramParameter(this._program, GL.ACTIVE_ATTRIBUTES);
             for (let i = 0; i < attributeCount; ++i) {
-                let info: WebGLActiveInfo = GL.getActiveAttrib(this._program, i);
+                const info: WebGLActiveInfo = GL.getActiveAttrib(this._program, i);
                 if (!info) {
                     break;
                 }
@@ -103,9 +102,9 @@ namespace Arch {
         }
 
         private _detectUniforms(): void {
-            let uniformCount: number = GL.getProgramParameter(this._program, GL.ACTIVE_UNIFORMS);
+            const uniformCount: number = GL.getProgramParameter(this._program, GL.ACTIVE_UNIFORMS);
             for (let i = 0; i < uniformCount; ++i) {
-                let info: WebGLActiveInfo = GL.getActiveUniform(this._program, i);
+                const info: WebGLActiveInfo = GL.getActiveUniform(this._program, i);
                 if (!info) {
                     break;
                 }

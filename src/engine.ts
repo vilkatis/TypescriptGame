@@ -27,10 +27,13 @@ namespace Arch {
             this._shader = new BasicShader();
             this._shader.use();
 
+            // Load materials
+            MaterialManager.registerMaterial(new Material('crate', 'assets/textures/wood.jpg', new Color(255, 128, 0, 255)));
+
             // Load
             this._projection = Matrix4x4.orthographic(0, Canvas.width, Canvas.height, 0, -100.0, 100.0);
 
-            this._sprite = new Sprite('test', 'assets/textures/wood.jpg');
+            this._sprite = new Sprite('test', 'crate');
             this._sprite.load();
             this._sprite.position.x = 200;
 

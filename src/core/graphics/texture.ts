@@ -20,7 +20,7 @@ namespace Arch {
 
             GL.texImage2D(GL.TEXTURE_2D, Texture.LEVEL, GL.RGBA, 1, 1, Texture.BORDER, GL.RGBA, GL.UNSIGNED_BYTE, Texture.TEMP_IMAGE_DATA);
 
-            let asset: ImageAsset = AssetManager.getAsset(this.name) as ImageAsset;
+            const asset: ImageAsset = AssetManager.getAsset(this.name) as ImageAsset;
             if (asset !== undefined) {
                 this._loadTextureFromAsset(asset);
             }
@@ -71,17 +71,15 @@ namespace Arch {
             this.bind();
             GL.texImage2D(GL.TEXTURE_2D, Texture.LEVEL, GL.RGBA, GL.RGBA, GL.UNSIGNED_BYTE, asset.data);
 
-            if ( this._isPowerOf2() ) {
-                GL.generateMipmap( GL.TEXTURE_2D );
+            if (this._isPowerOf2()) {
+                GL.generateMipmap(GL.TEXTURE_2D);
             } else {
 
                 // Do not generate a mip map and clamp wrapping to edge.
-                GL.texParameteri( GL.TEXTURE_2D, GL.TEXTURE_WRAP_S, GL.CLAMP_TO_EDGE );
-                GL.texParameteri( GL.TEXTURE_2D, GL.TEXTURE_WRAP_T, GL.CLAMP_TO_EDGE );
-                GL.texParameteri( GL.TEXTURE_2D, GL.TEXTURE_MIN_FILTER, GL.LINEAR );
+                GL.texParameteri(GL.TEXTURE_2D, GL.TEXTURE_WRAP_S, GL.CLAMP_TO_EDGE);
+                GL.texParameteri(GL.TEXTURE_2D, GL.TEXTURE_WRAP_T, GL.CLAMP_TO_EDGE);
+                GL.texParameteri(GL.TEXTURE_2D, GL.TEXTURE_MIN_FILTER, GL.LINEAR);
             }
-
-            this._isLoaded = true;
 
             this._isLoaded = true;
         }

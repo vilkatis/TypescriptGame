@@ -14,7 +14,7 @@ namespace Arch {
 
         public static getTexture(textureName: string): Texture {
             if (TextureManager._textures[textureName] === undefined) {
-                let texture: Texture = new Texture(textureName);
+                const texture: Texture = new Texture(textureName);
                 TextureManager._textures[textureName] = new TextureReferenceNode(texture);
             } else {
                 TextureManager._textures[textureName].referenceCount++;
@@ -24,12 +24,14 @@ namespace Arch {
 
         public static releaseTexture(textureName: string): void {
             if (TextureManager._textures[textureName] === undefined) {
-                console.log(`A texture named ${textureName} does not exist and therefore cannot be released.`)
+                console.log(`A texture named ${textureName} does not exist and therefore cannot be released.`);
             } else {
                 TextureManager._textures[textureName].referenceCount--;
-                if (TextureManager._textures[textureName].referenceCount < 1) TextureManager._textures[textureName].texture.destroy();
-                TextureManager._textures[textureName] = undefined;
-                delete TextureManager._textures[textureName];
+                if (TextureManager._textures[textureName].referenceCount < 1) {
+                    TextureManager._textures[textureName].texture.destroy();
+                    TextureManager._textures[textureName] = undefined;
+                    delete TextureManager._textures[textureName];
+                }
             }
         }
     }
