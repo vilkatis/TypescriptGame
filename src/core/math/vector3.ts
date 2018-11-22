@@ -65,6 +65,14 @@ namespace Arch {
             this._z = z;
         }
 
+        public static get zero(): Vector3 {
+            return new Vector3();
+        }
+
+        public static get one(): Vector3 {
+            return new Vector3(1, 1, 1);
+        }
+
         /**
          * Returns the data of this vector as a number array.
          * @returns {number[]}
@@ -79,6 +87,24 @@ namespace Arch {
          */
         public toFloat32Array(): Float32Array {
             return new Float32Array(this.toArray());
+        }
+
+        public copyFrom(vector: Vector3): void {
+            this._x = vector._x;
+            this._y = vector._y;
+            this._z = vector._z;
+        }
+
+        public setFromJson(json: any): void {
+            if (json.x !== undefined) {
+                this._x = Number(json.x);
+            }
+            if (json.y !== undefined) {
+                this._y = Number(json.y);
+            }
+            if (json.z !== undefined) {
+                this._z = Number(json.z);
+            }
         }
     }
 }

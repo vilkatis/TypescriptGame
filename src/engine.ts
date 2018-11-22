@@ -6,7 +6,6 @@ namespace Arch {
     export class Engine {
         private _shader: Shader;
 
-        private _sprite: Sprite;
 
         private _projection: Matrix4x4;
 
@@ -23,6 +22,7 @@ namespace Arch {
          */
         public start(): void {
             AssetManager.initialize();
+            ZoneManager.initialize();
 
             this._shader = new BasicShader();
             this._shader.use();
@@ -33,9 +33,8 @@ namespace Arch {
             // Load
             this._projection = Matrix4x4.orthographic(0, Canvas.width, Canvas.height, 0, -100.0, 100.0);
 
-            this._sprite = new Sprite('test', 'crate');
-            this._sprite.load();
-            this._sprite.position.x = 200;
+            // TODO change this to be read from a game configuration later.
+            ZoneManager.changeZone(0);
 
             this.resize();
             this._loop();
@@ -48,14 +47,15 @@ namespace Arch {
 
         private _loop(): void {
             MessageBus.update(0);
+            ZoneManager.update(0);
 
             GL.clear(GL.COLOR_BUFFER_BIT);
 
+            ZoneManager.render(this._shader);
             // Set uniforms.
-            let projectionPosition: WebGLUniformLocation = this._shader.getUniformLocation('u_projection');
+            const projectionPosition: WebGLUniformLocation = this._shader.getUniformLocation('u_projection');
             GL.uniformMatrix4fv(projectionPosition, false, new Float32Array(this._projection.data));
 
-            this._sprite.draw(this._shader);
 
             requestAnimationFrame(this._loop.bind(this));
         }

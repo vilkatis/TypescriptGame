@@ -4,8 +4,8 @@ namespace Arch {
             return ['png', 'gif', 'jpg'];
         }
 
-        loadAsset(assetName: string): void {
-            let image: HTMLImageElement = new Image();
+        public loadAsset(assetName: string): void {
+            const image: HTMLImageElement = new Image();
             image.onload = this._onImageLoaded.bind(this, assetName, image);
             image.src = assetName;
         }
