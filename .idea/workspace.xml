@@ -1,17 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f1642417-df04-463b-ac52-d84a2de92855" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/core/graphics/material-manager.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/core/gl/shader.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/gl/shader.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/core/graphics/material.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/graphics/material.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/core/graphics/sprite.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/graphics/sprite.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/core/graphics/texture-manager.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/graphics/texture-manager.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/core/graphics/texture.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/graphics/texture.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/engine.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/engine.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tslint.json" beforeDir="false" afterPath="$PROJECT_DIR$/tslint.json" afterDir="false" />
-    </list>
+    <list default="true" id="f1642417-df04-463b-ac52-d84a2de92855" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/dist/" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -71,8 +61,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/engine.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="377">
-              <caret line="30" column="108" selection-start-line="30" selection-start-column="105" selection-end-line="30" selection-end-column="108" />
+            <state relative-caret-position="216">
+              <caret line="23" column="30" lean-forward="true" selection-start-line="23" selection-start-column="30" selection-end-line="23" selection-end-column="30" />
             </state>
           </provider>
         </entry>
@@ -212,12 +202,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1542842517463</updated>
-      <workItem from="1542842521986" duration="2478000" />
+      <workItem from="1542842521986" duration="3754000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2478000" />
+    <option name="totallyTimeSpent" value="3754000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -225,10 +215,10 @@
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
       <window_info id="npm" order="1" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="2" visible="true" weight="0.24973656" />
+      <window_info content_ui="combo" id="Project" order="2" visible="true" weight="0.24973656" />
       <window_info id="Structure" order="3" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" order="1" visible="true" weight="0.32936078" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="1" visible="true" weight="0.32936078" />
       <window_info anchor="bottom" id="Event Log" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="3" />
       <window_info anchor="bottom" id="Message" order="4" />
@@ -323,8 +313,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/engine.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="377">
-          <caret line="30" column="108" selection-start-line="30" selection-start-column="105" selection-end-line="30" selection-end-column="108" />
+        <state relative-caret-position="216">
+          <caret line="23" column="30" lean-forward="true" selection-start-line="23" selection-start-column="30" selection-end-line="23" selection-end-column="30" />
         </state>
       </provider>
     </entry>
