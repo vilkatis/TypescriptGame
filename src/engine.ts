@@ -22,6 +22,7 @@ namespace Arch {
          */
         public start(): void {
             AssetManager.initialize();
+            ZoneManager.initialize();
 
             this._shader = new BasicShader();
             this._shader.use();
@@ -29,11 +30,11 @@ namespace Arch {
             // Load materials
             MaterialManager.registerMaterial(new Material('crate', 'assets/textures/wood.jpg', new Color(255, 128, 0, 255)));
 
-            const zoneID: number = ZoneManager.createTestZone();
             // Load
             this._projection = Matrix4x4.orthographic(0, Canvas.width, Canvas.height, 0, -100.0, 100.0);
 
-            ZoneManager.changeZone(zoneID);
+            // TODO change this to be read from a game configuration later.
+            ZoneManager.changeZone(0);
 
             this.resize();
             this._loop();
