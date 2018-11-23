@@ -4,7 +4,7 @@ namespace Arch {
             return 'sprite';
         }
 
-        public buildFromJson(json: any): Arch.IComponent {
+        public buildFromJson(json: any): IComponent {
             const data: SpriteComponentData = new SpriteComponentData();
             data.setFromJson(json);
             return new SpriteComponent(data);

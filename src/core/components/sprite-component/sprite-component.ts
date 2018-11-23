@@ -1,4 +1,4 @@
-/// <reference path="component-manager.ts" />
+/// <reference path="../component-manager.ts" />
 /// <reference path="sprite-component-builder.ts" />
 namespace Arch {
     export class SpriteComponent extends Component {

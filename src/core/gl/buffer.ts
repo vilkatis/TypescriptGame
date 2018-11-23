@@ -13,17 +13,16 @@ namespace Arch {
         private _typeSize: number;
 
         private _data: number[] = [];
-        private _attributes: IAttributeInfo[] = [];
+        private _attributes: AttributeInfo[] = [];
 
         /**
          * Creates a new GL buffer.
-         * @param elementSize The size of each element in this buffer.
          * @param dataType The data type of this buffer.
          * @param targetBufferType The buffer target type.
          * @param mode The drawing mode of this buffer.
          */
-        public constructor(elementSize: number, dataType: number = GL.FLOAT, targetBufferType: number = GL.ARRAY_BUFFER, mode: number = GL.TRIANGLES) {
-            this._elementSize = elementSize;
+        public constructor(dataType: number = GL.FLOAT, targetBufferType: number = GL.ARRAY_BUFFER, mode: number = GL.TRIANGLES) {
+            this._elementSize = 0;
             this._dataType = dataType;
             this._targetBufferType = targetBufferType;
             this._mode = mode;
@@ -44,9 +43,8 @@ namespace Arch {
                     this._typeSize = 1;
                     break;
                 default:
-                    throw new Error(`Unrecognized data type: ${dataType.toString()}`)
+                    throw new Error(`Unrecognized data type: ${dataType.toString()}`);
             }
-            this._stride = this._elementSize * this._typeSize;
             this._buffer = GL.createBuffer();
         }
 
@@ -62,9 +60,9 @@ namespace Arch {
             GL.bindBuffer(this._targetBufferType, this._buffer);
 
             if (this._hasAttributeLocation) {
-                for (let it of this._attributes) {
-                    GL.vertexAttribPointer(it.location, it.size, this._dataType, normalized, this._stride, it.offset * this._typeSize);
-                    GL.enableVertexAttribArray(it.location);
+                for (const attribute of this._attributes) {
+                    GL.vertexAttribPointer(attribute.location, attribute.size, this._dataType, normalized, this._stride, attribute.offset * this._typeSize);
+                    GL.enableVertexAttribArray(attribute.location);
                 }
             }
         }
@@ -73,8 +71,8 @@ namespace Arch {
          * Unbind the buffer.
          */
         public unbind(): void {
-            for (let it of this._attributes) {
-                GL.disableVertexAttribArray(it.location);
+            for (const attribute of this._attributes) {
+                GL.disableVertexAttribArray(attribute.location);
             }
             GL.bindBuffer(this._targetBufferType, undefined);
         }
@@ -83,9 +81,21 @@ namespace Arch {
          * Adds an attribute with the provided information to this buffer.
          * @param info The information to be added.
          */
-        public addAttributeLocation(info: IAttributeInfo): void {
+        public addAttributeLocation(info: AttributeInfo): void {
             this._hasAttributeLocation = true;
+            info.offset = this._elementSize;
             this._attributes.push(info);
+            this._elementSize += info.size;
+            this._stride = this._elementSize * this._typeSize;
+        }
+
+        /**
+         * Replaces the current data in this buffer with the provided data.
+         * @param data The data to be loaded in this buffer.
+         */
+        public setData(data: number[]): void {
+            this.clearData();
+            this.pushBackData(data);
         }
 
         /**
@@ -94,6 +104,13 @@ namespace Arch {
          */
         public pushBackData(data: number[]): void {
             this._data.push(...data);
+        }
+
+        /**
+         * Clears out all data in this buffer.
+         */
+        public clearData(): void {
+            this._data.length = 0;
         }
 
         /**

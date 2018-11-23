@@ -25,7 +25,7 @@ namespace Arch {
 
         public static initCanvas(): void {
             Renderer.resizeCanvas();
-            GL.clearColor(0, 0, 0, 1);
+            GL.clearColor(0, 0, 0.1, 1);
             GL.clear(GL.COLOR_BUFFER_BIT);
         }
 

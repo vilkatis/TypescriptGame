@@ -3,6 +3,13 @@ namespace Arch {
      * 2 Component Vector
      */
     export class Vector2 {
+        public static get zero(): Vector2 {
+            return new Vector2();
+        }
+
+        public static get one(): Vector2 {
+            return new Vector2(1, 1);
+        }
 
         /**
          * Create a new Vector2
@@ -71,6 +78,11 @@ namespace Arch {
             if (json.y !== undefined) {
                 this._y = Number(json.y);
             }
+        }
+
+        public copyFrom(v: Vector2): void {
+            this.x = v.x;
+            this.y = v.y;
         }
     }
 }

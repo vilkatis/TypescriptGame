@@ -1,5 +1,8 @@
 namespace Arch {
     export class Color {
+        public static get white(): Color {
+            return new Color(255, 255, 255, 255);
+        }
         public get r(): number {
             return this._r;
         }

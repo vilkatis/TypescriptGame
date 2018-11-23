@@ -5,10 +5,8 @@ namespace Arch {
 
     export class Engine {
         private _shader: Shader;
-
-
         private _projection: Matrix4x4;
-
+        private _previousTime: number = 0;
 
         /**
          * Creates a new engine.
@@ -23,12 +21,15 @@ namespace Arch {
         public start(): void {
             AssetManager.initialize();
             ZoneManager.initialize();
+            GL.enable(GL.BLEND);
+            GL.blendFunc(GL.SRC_ALPHA, GL.ONE_MINUS_SRC_ALPHA);
 
             this._shader = new BasicShader();
             this._shader.use();
 
             // Load materials
-            MaterialManager.registerMaterial(new Material('crate', 'assets/textures/wood.jpg', new Color(255, 128, 0, 255)));
+            MaterialManager.registerMaterial(new Material('crate', 'assets/textures/wood.jpg', Color.white));
+            MaterialManager.registerMaterial(new Material('duck', 'assets/textures/duck.png', Color.white));
 
             // Load
             this._projection = Matrix4x4.orthographic(0, Canvas.width, Canvas.height, 0, -100.0, 100.0);
@@ -46,17 +47,24 @@ namespace Arch {
         }
 
         private _loop(): void {
-            MessageBus.update(0);
-            ZoneManager.update(0);
+            this._update();
+            this._render();
+        }
 
+        private _update(): void {
+            const delta: number = performance.now() - this._previousTime;
+            MessageBus.update(delta);
+            ZoneManager.update(delta);
+
+            this._previousTime = performance.now();
+        }
+
+        private _render(): void {
             GL.clear(GL.COLOR_BUFFER_BIT);
-
             ZoneManager.render(this._shader);
             // Set uniforms.
             const projectionPosition: WebGLUniformLocation = this._shader.getUniformLocation('u_projection');
             GL.uniformMatrix4fv(projectionPosition, false, new Float32Array(this._projection.data));
-
-
             requestAnimationFrame(this._loop.bind(this));
         }
     }

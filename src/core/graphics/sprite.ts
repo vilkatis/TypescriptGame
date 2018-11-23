@@ -1,12 +1,13 @@
 namespace Arch {
     export class Sprite {
-        private readonly _name: string;
-        private readonly _width: number;
-        private readonly _height: number;
-        private _materialName: string;
+        protected readonly _name: string;
+        protected readonly _width: number;
+        protected readonly _height: number;
+        protected _materialName: string;
 
-        private _buffer: Buffer;
-        private _material: Material;
+        protected _buffer: Buffer;
+        protected _material: Material;
+        protected _vertices: Vertex[] = [];
 
         /**
          * Creates a new sprite.
@@ -35,33 +36,29 @@ namespace Arch {
         }
 
         public load(): void {
-            this._buffer = new Buffer(5);
+            this._buffer = new Buffer();
 
-            const positionAttribute: IAttributeInfo = {
-                location: 0,
-                offset: 0,
-                size: 3
-            };
+            const positionAttribute: AttributeInfo = new AttributeInfo();
+            positionAttribute.location = 0;
+            positionAttribute.size = 3;
             this._buffer.addAttributeLocation(positionAttribute);
 
-            const texCoordAttribute: IAttributeInfo = {
-                location: 1,
-                offset: 3,
-                size: 2
-            };
+            const texCoordAttribute: AttributeInfo = new AttributeInfo();
+            texCoordAttribute.location = 1;
+            texCoordAttribute.size = 2;
             this._buffer.addAttributeLocation(texCoordAttribute);
 
-            const vertices = [
-                // x, y, z, u, v
-                0, 0, 0, 0, 0,
-                0, this._height, 0, 0, 1.0,
-                this._width, this._height, 0, 1.0, 1.0,
-                this._width, this._height, 0, 1.0, 1.0,
-                this._width, 0, 0, 1.0, 0,
-                0, 0, 0, 0, 0
+            this._vertices = [
+                new Vertex(0, 0, 0, 0, 0),
+                new Vertex(0, this._height, 0, 0, 1.0),
+                new Vertex(this._width, this._height, 0, 1.0, 1.0),
+                new Vertex(this._width, this._height, 0, 1.0, 1.0),
+                new Vertex(this._width, 0, 0, 1.0, 0),
+                new Vertex(0, 0, 0, 0, 0)
             ];
-
-            this._buffer.pushBackData(vertices);
+            for (const vertex of this._vertices) {
+                this._buffer.pushBackData(vertex.toArray());
+            }
             this._buffer.upload();
             this._buffer.unbind();
         }

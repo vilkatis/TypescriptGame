@@ -33,7 +33,7 @@ namespace Arch {
             return this._description;
         }
 
-        get scene(): Arch.Scene {
+        get scene(): Scene {
             return this._scene;
         }
 
