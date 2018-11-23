@@ -3,7 +3,7 @@ namespace Arch {
      * Game Engine
      */
 
-    export class Engine {
+    export class Engine implements IMessageHandler {
         private _shader: Shader;
         private _projection: Matrix4x4;
         private _previousTime: number = 0;
@@ -20,7 +20,10 @@ namespace Arch {
          */
         public start(): void {
             AssetManager.initialize();
+            InputManager.initialize();
             ZoneManager.initialize();
+
+            Message.subscribe(Constants.MOUSE_UP, this);
             GL.enable(GL.BLEND);
             GL.blendFunc(GL.SRC_ALPHA, GL.ONE_MINUS_SRC_ALPHA);
 
@@ -44,6 +47,13 @@ namespace Arch {
         public resize() {
             Renderer.resizeCanvas();
             this._projection = Matrix4x4.orthographic(0, Canvas.width, Canvas.height, 0, -100.0, 100.0);
+        }
+
+        public onMessage(message: Message): void {
+            if (message.code === Constants.MOUSE_UP) {
+                const context: MouseContext = message.context as MouseContext;
+                document.title = `Pos: [${context.position.x}, ${context.position.y}]`;
+            }
         }
 
         private _loop(): void {

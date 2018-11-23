@@ -1,5 +1,5 @@
-/// <reference path="behavior.ts" />
-/// <reference path="behavior-manager.ts" />
+/// <reference path="../behavior.ts" />
+/// <reference path="../behavior-manager.ts" />
 /// <reference path="rotation-behavior-builder.ts" />
 namespace Arch {
     export class RotationBehavior extends Behavior {

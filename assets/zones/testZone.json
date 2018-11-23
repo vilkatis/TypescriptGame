@@ -25,6 +25,13 @@
           "frameCount": 3,
           "frameSequence": [0, 1, 2, 1]
         }
+      ],
+      "behaviors": [
+        {
+          "name": "movementBehavior",
+          "type": "keyboardMovement",
+          "speed": 2.5
+        }
       ]
     },
     {
@@ -65,7 +72,7 @@
           "name": "rotateX",
           "type": "rotation",
           "rotation": {
-            "z": 0.01
+            "z": 0.00
           }
         }
       ]
