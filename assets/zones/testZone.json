@@ -72,7 +72,7 @@
           "name": "rotateX",
           "type": "rotation",
           "rotation": {
-            "z": 0.00
+            "z": 0.01
           }
         }
       ]

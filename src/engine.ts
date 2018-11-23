@@ -34,6 +34,8 @@ namespace Arch {
             MaterialManager.registerMaterial(new Material('crate', 'assets/textures/wood.jpg', Color.white));
             MaterialManager.registerMaterial(new Material('duck', 'assets/textures/duck.png', Color.white));
 
+            AudioManager.loadSoundFile('flap', 'assets/sounds/flap.mp3', false);
+
             // Load
             this._projection = Matrix4x4.orthographic(0, Canvas.width, Canvas.height, 0, -100.0, 100.0);
 
@@ -53,6 +55,7 @@ namespace Arch {
             if (message.code === Constants.MOUSE_UP) {
                 const context: MouseContext = message.context as MouseContext;
                 document.title = `Pos: [${context.position.x}, ${context.position.y}]`;
+                AudioManager.playSound('flap');
             }
         }
 
