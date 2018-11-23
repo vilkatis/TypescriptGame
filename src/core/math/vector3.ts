@@ -106,5 +106,33 @@ namespace Arch {
                 this._z = Number(json.z);
             }
         }
+
+        public add(v: Vector3): Vector3 {
+            this.x += v._x;
+            this.y += v._y;
+            this.z += v._z;
+            return this;
+        }
+
+        public substract(v: Vector3): Vector3 {
+            this.x -= v._x;
+            this.y -= v._y;
+            this.z -= v._z;
+            return this;
+        }
+
+        public multiply(v: Vector3): Vector3 {
+            this.x *= v._x;
+            this.y *= v._y;
+            this.z *= v._z;
+            return this;
+        }
+
+        public divide(v: Vector3): Vector3 {
+            this.x /= v._x;
+            this.y /= v._y;
+            this.z /= v._z;
+            return this;
+        }
     }
 }

@@ -12,10 +12,10 @@ namespace Arch {
                 if (builder !== undefined) {
                     return builder.buildFromJson(json);
                 } else {
-                    throw new Error(`Component error - builder is not registered for type ${json.type}`);
+                    throw new Error(`Component manager error - builder is not registered for type ${json.type}`);
                 }
             } else {
-                throw new Error('Component error - type is missing');
+                throw new Error('Component manager error - type is missing');
             }
         }
     }

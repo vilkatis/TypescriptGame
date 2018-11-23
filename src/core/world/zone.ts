@@ -91,6 +91,13 @@ namespace Arch {
                     simObject.addComponent(component);
                 }
             }
+            if (dataSection.behaviors !== undefined) {
+                for (const key in dataSection.behaviors) {
+                    const data: any = dataSection.behaviors[key];
+                    const behavior: IBehavior = BehaviorManager.extractBehavior(data);
+                    simObject.addBehavior(behavior);
+                }
+            }
             if (dataSection.children !== undefined) {
                 for (const key in dataSection.children) {
                     const data: any = dataSection.children[key];

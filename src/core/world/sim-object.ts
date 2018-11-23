@@ -6,6 +6,7 @@ namespace Arch {
         private _children: SimObject[] = [];
         private _scene: Scene;
         private _components: IComponent[] = [];
+        private _behaviors: IBehavior[] = [];
         private _localMatrix: Matrix4x4 = Matrix4x4.identity();
         private _worldMatrix: Matrix4x4 = Matrix4x4.identity();
         private _parent: SimObject;
@@ -65,6 +66,11 @@ namespace Arch {
             component.owner = (this);
         }
 
+        public addBehavior(behavior: IBehavior): void {
+            this._behaviors.push(behavior);
+            behavior.owner = (this);
+        }
+
         public load(): void {
             this._isLoaded = true;
             for (const component of this._components) {
@@ -80,6 +86,9 @@ namespace Arch {
             this._updateWorldMatrix((this._parent !== undefined) ? this._parent.worldMatrix : undefined);
             for (const component of this._components) {
                 component.update(time);
+            }
+            for (const behavior of this._behaviors) {
+                behavior.update(time);
             }
             for (const child of this._children) {
                 child.update(time);
