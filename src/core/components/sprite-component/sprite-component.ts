@@ -6,6 +6,9 @@ namespace Arch {
         public constructor(data: SpriteComponentData) {
             super(data);
             this._sprite = new Sprite(name, data.materialName);
+            if (!data.origin.equals(Vector3.zero)) {
+                this._sprite.origin.copyFrom(data.origin);
+            }
         }
 
         public load(): void {

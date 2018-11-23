@@ -68,6 +68,7 @@ namespace Arch {
             const delta: number = performance.now() - this._previousTime;
             MessageBus.update(delta);
             ZoneManager.update(delta);
+            CollisionManager.update(delta);
 
             this._previousTime = performance.now();
         }

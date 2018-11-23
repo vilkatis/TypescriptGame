@@ -47,16 +47,18 @@ namespace Arch {
 
         private static _onKeyDown(event: KeyboardEvent): boolean {
             InputManager._keys[event.keyCode] = true;
-            event.preventDefault();
-            event.stopPropagation();
-            return false;
+            return true;
+            // event.preventDefault();
+            // event.stopPropagation();
+            // return false;
         }
 
         private static _onKeyUp(event: KeyboardEvent): boolean {
             InputManager._keys[event.keyCode] = false;
-            event.preventDefault();
-            event.stopPropagation();
-            return false;
+            return true;
+            // event.preventDefault();
+            // event.stopPropagation();
+            // return false;
         }
 
         private static _onMouseMove(event: MouseEvent): void {

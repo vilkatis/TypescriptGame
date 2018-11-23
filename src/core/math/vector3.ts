@@ -8,6 +8,11 @@ namespace Arch {
         private _y: number;
         private _z: number;
 
+        public static distance(a: Vector3, b: Vector3): number {
+            const diff: Vector3 = a.clone().substract(b);
+            return Math.sqrt(diff.x * diff.x + diff.y * diff.y + diff.z * diff.z);
+        }
+
         /**
          * Create a new Vector3
          * @param x {number} The x component.
@@ -73,6 +78,16 @@ namespace Arch {
             return new Vector3(1, 1, 1);
         }
 
+        public set(x?: number, y?: number, z?: number): void {
+            if (x !== undefined) this._x = x;
+            if (y !== undefined) this.y = z;
+            if (z !== undefined) this.z = z;
+        }
+
+        public equals(v: Vector3): boolean {
+            return (this._x === v.x && this._y === v.y && this._z === v.z);
+        }
+
         /**
          * Returns the data of this vector as a number array.
          * @returns {number[]}
@@ -133,6 +148,14 @@ namespace Arch {
             this.y /= v._y;
             this.z /= v._z;
             return this;
+        }
+
+        public clone(): Vector3 {
+            return new Vector3(this._x, this._y, this._z);
+        }
+
+        public toVector2(): Vector2 {
+            return new Vector2(this._x, this._y);
         }
     }
 }

@@ -42,6 +42,10 @@ namespace Arch {
             return this._name;
         }
 
+        public get isLoaded(): boolean {
+            return this._isLoaded;
+        }
+
         public destroy(): void {
             GL.deleteTexture(this._handle);
         }

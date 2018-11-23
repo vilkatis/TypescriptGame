@@ -3,6 +3,8 @@ namespace Arch {
         protected readonly _name: string;
         protected readonly _width: number;
         protected readonly _height: number;
+
+        protected _origin: Vector3 = Vector3.zero;
         protected _materialName: string;
 
         protected _buffer: Buffer;
@@ -28,6 +30,15 @@ namespace Arch {
             return this._name;
         }
 
+        public get origin(): Vector3 {
+            return this._origin;
+        }
+
+        public set origin(value: Vector3) {
+            this._origin = value;
+            this.recalculateVertices();
+        }
+
         public destroy(): void {
             this._buffer.destroy();
             MaterialManager.releaseMaterial(this._materialName);
@@ -47,20 +58,7 @@ namespace Arch {
             texCoordAttribute.location = 1;
             texCoordAttribute.size = 2;
             this._buffer.addAttributeLocation(texCoordAttribute);
-
-            this._vertices = [
-                new Vertex(0, 0, 0, 0, 0),
-                new Vertex(0, this._height, 0, 0, 1.0),
-                new Vertex(this._width, this._height, 0, 1.0, 1.0),
-                new Vertex(this._width, this._height, 0, 1.0, 1.0),
-                new Vertex(this._width, 0, 0, 1.0, 0),
-                new Vertex(0, 0, 0, 0, 0)
-            ];
-            for (const vertex of this._vertices) {
-                this._buffer.pushBackData(vertex.toArray());
-            }
-            this._buffer.upload();
-            this._buffer.unbind();
+            this.calculateVertices();
         }
 
         public update(time: number): void {
@@ -81,6 +79,51 @@ namespace Arch {
 
             this._buffer.bind();
             this._buffer.draw();
+        }
+
+        protected calculateVertices(): void {
+            const minX: number = -this._width * this._origin.x;
+            const maxX: number = this._width * (1.0 - this.origin.x);
+
+            const minY: number = -this._height * this._origin.y;
+            const maxY: number = this._height * (1.0 - this.origin.y);
+
+            this._vertices = [
+                new Vertex(minX, minY, 0, 0, 0),
+                new Vertex(minX, maxY, 0, 0, 1.0),
+                new Vertex(maxX, maxY, 0, 1.0, 1.0),
+                new Vertex(maxX, maxY, 0, 1.0, 1.0),
+                new Vertex(maxX, minY, 0, 1.0, 0),
+                new Vertex(minX, minY, 0, 0, 0)
+            ];
+            for (const vertex of this._vertices) {
+                this._buffer.pushBackData(vertex.toArray());
+            }
+            this._buffer.upload();
+            this._buffer.unbind();
+        }
+
+        protected recalculateVertices(): void {
+            const minX: number = -this._width * this._origin.x;
+            const maxX: number = this._width * (1.0 - this.origin.x);
+
+            const minY: number = -this._height * this._origin.y;
+            const maxY: number = this._height * (1.0 - this.origin.y);
+
+            this._vertices[0].position.set(minX, minY);
+            this._vertices[1].position.set(minX, maxY);
+            this._vertices[2].position.set(maxX, maxY);
+
+            this._vertices[3].position.set(maxX, maxY);
+            this._vertices[4].position.set(maxX, minY);
+            this._vertices[5].position.set(minX, minY);
+
+            this._buffer.clearData();
+            for (const vertex of this._vertices) {
+                this._buffer.pushBackData(vertex.toArray());
+            }
+            this._buffer.upload();
+            this._buffer.unbind();
         }
     }
 }

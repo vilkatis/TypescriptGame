@@ -11,6 +11,11 @@ namespace Arch {
             return new Vector2(1, 1);
         }
 
+        public static distance(a: Vector2, b: Vector2): number {
+            const diff: Vector2 = a.clone().substract(b);
+            return Math.sqrt(diff.x * diff.x + diff.y * diff.y);
+        }
+
         /**
          * Create a new Vector2
          * @param x {number} The x component.
@@ -83,6 +88,34 @@ namespace Arch {
         public copyFrom(v: Vector2): void {
             this.x = v.x;
             this.y = v.y;
+        }
+
+        public add(v: Vector2): Vector2 {
+            this.x += v._x;
+            this.y += v._y;
+            return this;
+        }
+
+        public substract(v: Vector2): Vector2 {
+            this.x -= v._x;
+            this.y -= v._y;
+            return this;
+        }
+
+        public multiply(v: Vector2): Vector2 {
+            this.x *= v._x;
+            this.y *= v._y;
+            return this;
+        }
+
+        public divide(v: Vector2): Vector2 {
+            this.x /= v._x;
+            this.y /= v._y;
+            return this;
+        }
+
+        public clone(): Vector2 {
+            return new Vector2(this._x, this._y);
         }
     }
 }

@@ -1,16 +1,16 @@
 namespace Arch {
-    export var GL: WebGLRenderingContext;
-    export var Canvas: HTMLCanvasElement;
+    export let GL: WebGLRenderingContext;
+    export let Canvas: HTMLCanvasElement;
 
     export class Renderer {
         public static initialize(canvasId: string) {
             if (canvasId) {
-                Canvas = <HTMLCanvasElement>document.getElementById(canvasId);
+                Canvas = document.getElementById(canvasId) as HTMLCanvasElement;
                 if (!Canvas) {
                     throw new Error(`Cannot find a canvas element with the ID: ${canvasId}`);
                 }
             } else {
-                Canvas = <HTMLCanvasElement>document.createElement('canvas');
+                Canvas = document.createElement('canvas') as HTMLCanvasElement;
                 document.body.append(Canvas);
             }
 
@@ -32,7 +32,7 @@ namespace Arch {
         public static resizeCanvas(): void {
             Canvas.width = window.innerWidth;
             Canvas.height = window.innerHeight;
-            GL.viewport(0, 0, Canvas.width, Canvas.height)
+            GL.viewport(0, 0, Canvas.width, Canvas.height);
         }
     }
 }

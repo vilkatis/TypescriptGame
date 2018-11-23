@@ -69,9 +69,9 @@ namespace Arch {
 
             GL.shaderSource(shader, source);
             GL.compileShader(shader);
-            const error = GL.getShaderInfoLog(shader);
-            if (error) {
-                throw new Error(`Error compiling shader: ${error}`);
+            const error: string | null = GL.getShaderInfoLog(shader).trim();
+            if (error !== '') {
+                throw new Error(`Error compiling shader ${this.name}: ${error}`);
             }
             return shader;
         }
@@ -84,7 +84,7 @@ namespace Arch {
 
             GL.linkProgram(this._program);
 
-            const error = GL.getProgramInfoLog(this._program);
+            const error : string | null = GL.getProgramInfoLog(this._program).trim();
             if (error) {
                 throw new Error(`Error linking shader ${this._name}: ${error}`);
             }

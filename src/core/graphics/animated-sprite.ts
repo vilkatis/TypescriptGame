@@ -46,10 +46,16 @@ namespace Arch {
 
         public load(): void {
             super.load();
+            if (!this._assetLoaded) {
+                this._setupFromMaterial();
+            }
         }
 
         public update(time: number): void {
-            if (!this._assetLoaded) return;
+            if (!this._assetLoaded) {
+                this._setupFromMaterial();
+                return;
+            }
             this._currentTime += time;
             if (this._currentTime > this._frameTime) {
                 this._currentFrame++;
@@ -76,6 +82,7 @@ namespace Arch {
 
             super.update(time);
         }
+
         public onMessage(message: Message): void {
             if (message.code === `${Constants.MESSAGE_ASSET_LOADER_ASSET_LOADED}::${this._material.diffuseTextureName}`) {
                 this._assetLoaded = true;
@@ -100,6 +107,18 @@ namespace Arch {
                 const uMax: number = (i + 1) * this._frameWidth / this._assetWidth;
                 const vMax: number = (yAxis + 1) * this._frameHeight / this._assetHeight;
                 this._frameUVs.push(new UVInfo(new Vector2(uMin, vMin), new Vector2(uMax, vMax)));
+            }
+        }
+
+        private _setupFromMaterial(): void {
+            const material: Material = MaterialManager.getMaterial(this._materialName);
+            if (material.diffuseTexture.isLoaded) {
+                if (AssetManager.isAssetLoaded(material.diffuseTextureName)) {
+                    this._assetWidth = material.diffuseTexture.width;
+                    this._assetHeight = material.diffuseTexture.height;
+                    this._assetLoaded = true;
+                    this._calculateUVs();
+                }
             }
         }
     }
