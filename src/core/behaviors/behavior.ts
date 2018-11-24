@@ -12,6 +12,9 @@ namespace Arch {
             this._owner = owner;
         }
 
+        public updateReady(): void {
+        }
+
         public update(time: number): void {
         }
 

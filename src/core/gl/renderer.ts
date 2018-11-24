@@ -3,7 +3,9 @@ namespace Arch {
     export let Canvas: HTMLCanvasElement;
 
     export class Renderer {
-        public static initialize(canvasId: string) {
+        public static width: number;
+        public static height: number;
+        public static initialize(canvasId?: string, width?: number, height?: number) {
             if (canvasId) {
                 Canvas = document.getElementById(canvasId) as HTMLCanvasElement;
                 if (!Canvas) {
@@ -12,6 +14,14 @@ namespace Arch {
             } else {
                 Canvas = document.createElement('canvas') as HTMLCanvasElement;
                 document.body.append(Canvas);
+            }
+            if (width && height) {
+                this.width = width;
+                this.height = height;
+                Canvas.style.width = `${width}px`;
+                Canvas.style.height = `${height}px`;
+                Canvas.width = width;
+                Canvas.height = height;
             }
 
             GL = Canvas.getContext('webgl');
@@ -25,13 +35,15 @@ namespace Arch {
 
         public static initCanvas(): void {
             Renderer.resizeCanvas();
-            GL.clearColor(0, 0, 0.1, 1);
+            GL.clearColor(156 / 255, 206 / 255, 247 / 255, 1);
             GL.clear(GL.COLOR_BUFFER_BIT);
         }
 
         public static resizeCanvas(): void {
-            Canvas.width = window.innerWidth;
-            Canvas.height = window.innerHeight;
+            if (Renderer.width === undefined || Renderer.height === undefined) {
+                Canvas.width = window.innerWidth;
+                Canvas.height = window.innerHeight;
+            }
             GL.viewport(0, 0, Canvas.width, Canvas.height);
         }
     }

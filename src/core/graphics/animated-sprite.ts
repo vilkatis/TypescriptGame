@@ -23,6 +23,7 @@ namespace Arch {
         private _assetLoaded: boolean = false;
         private _assetWidth: number = 2;
         private _assetHeight: number = 2;
+        private _isPlaying: boolean = true;
 
         /**
          * Creates a new sprite.
@@ -40,8 +41,27 @@ namespace Arch {
             Message.subscribe(`${Constants.MESSAGE_ASSET_LOADER_ASSET_LOADED}::${this._material.diffuseTextureName}`, this);
         }
 
+        public get isPlaying(): boolean {
+            return this._isPlaying;
+        }
+
         public destroy(): void {
             super.destroy();
+        }
+
+        public play(): void {
+            this._isPlaying = true;
+        }
+
+        public stop(): void {
+            this._isPlaying = false;
+        }
+
+        public setFrame(frameNumber: number): void {
+            if (frameNumber >= this._frameCount) {
+                throw new Error(`Frame is out of range: ${frameNumber}, frameCount: ${this._frameCount}`);
+            }
+            this._currentFrame = frameNumber;
         }
 
         public load(): void {
@@ -56,6 +76,7 @@ namespace Arch {
                 this._setupFromMaterial();
                 return;
             }
+            if (!this._isPlaying) return;
             this._currentTime += time;
             if (this._currentTime > this._frameTime) {
                 this._currentFrame++;

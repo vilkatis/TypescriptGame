@@ -1,7 +1,7 @@
 let engine: Arch.Engine;
 
 window.onload = () => {
-    engine = new Arch.Engine();
+    engine = new Arch.Engine(null, 320, 480);
     engine.start();
 };
 

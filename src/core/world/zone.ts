@@ -50,6 +50,7 @@ namespace Arch {
         public load(): void {
             this._state = ZoneState.LOADING;
             this._scene.load();
+            this._scene.root.updateReady();
             this._state = ZoneState.UPDATING;
         }
 

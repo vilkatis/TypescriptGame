@@ -1,15 +1,5 @@
 namespace Arch {
-    class CollisionData {
-        public a: CollisionComponent;
-        public b: CollisionComponent;
-        public time: number;
 
-        public constructor(time: number, a: CollisionComponent, b: CollisionComponent) {
-            this.a = a;
-            this.b = b;
-            this.time = time;
-        }
-    }
     export class CollisionManager {
         private static _components: CollisionComponent[] = [];
         private static _collisionData: CollisionData[] = [];
@@ -51,11 +41,12 @@ namespace Arch {
                         }
                         if (!exists) {
                             // Create a new collision.
+                            const collision: CollisionData = new CollisionData(CollisionManager._totalTime, component, other);
                             component.onCollisionEntry(other);
                             other.onCollisionEntry(component);
-                            console.log('Component', component);
-                            console.log('Other', other);
-                            this._collisionData.push(new CollisionData(CollisionManager._totalTime, component, other));
+                            Message.sendPriority(`${Constants.COLLISION_ENTRY}::${component.name}`, this, collision);
+                            Message.sendPriority(`${Constants.COLLISION_ENTRY}::${other.name}`, this, collision);
+                            this._collisionData.push(collision);
                         }
                     }
                 }
@@ -76,10 +67,9 @@ namespace Arch {
                 CollisionManager._collisionData.splice(index, 1);
                 data.a.onCollisionExit(data.b);
                 data.b.onCollisionExit(data.a);
+                Message.sendPriority(`${Constants.COLLISION_EXIT}::${data.a.name}`, this, data);
+                Message.sendPriority(`${Constants.COLLISION_EXIT}::${data.b.name}`, this, data);
             }
-
-            // TODO: REMOVE ME
-            document.title = CollisionManager._collisionData.length.toString(10);
         }
     }
 }

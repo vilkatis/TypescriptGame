@@ -11,8 +11,8 @@ namespace Arch {
         /**
          * Creates a new engine.
          */
-        public constructor(canvasId?: string) {
-            Renderer.initialize(canvasId);
+        public constructor(canvasId?: string, width?: number, height?: number) {
+            Renderer.initialize(canvasId, width, height);
         }
 
         /**
@@ -23,7 +23,6 @@ namespace Arch {
             InputManager.initialize();
             ZoneManager.initialize();
 
-            Message.subscribe(Constants.MOUSE_UP, this);
             GL.enable(GL.BLEND);
             GL.blendFunc(GL.SRC_ALPHA, GL.ONE_MINUS_SRC_ALPHA);
 
@@ -31,10 +30,12 @@ namespace Arch {
             this._shader.use();
 
             // Load materials
-            MaterialManager.registerMaterial(new Material('crate', 'assets/textures/wood.jpg', Color.white));
+            MaterialManager.registerMaterial(new Material('grass', 'assets/textures/grass.png', Color.white));
             MaterialManager.registerMaterial(new Material('duck', 'assets/textures/duck.png', Color.white));
 
             AudioManager.loadSoundFile('flap', 'assets/sounds/flap.mp3', false);
+            AudioManager.loadSoundFile('ting', 'assets/sounds/ting.mp3', false);
+            AudioManager.loadSoundFile('dead', 'assets/sounds/dead.mp3', false);
 
             // Load
             this._projection = Matrix4x4.orthographic(0, Canvas.width, Canvas.height, 0, -100.0, 100.0);
@@ -55,7 +56,6 @@ namespace Arch {
             if (message.code === Constants.MOUSE_UP) {
                 const context: MouseContext = message.context as MouseContext;
                 document.title = `Pos: [${context.position.x}, ${context.position.y}]`;
-                AudioManager.playSound('flap');
             }
         }
 

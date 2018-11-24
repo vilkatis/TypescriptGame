@@ -80,8 +80,8 @@ namespace Arch {
 
         public set(x?: number, y?: number, z?: number): void {
             if (x !== undefined) this._x = x;
-            if (y !== undefined) this.y = z;
-            if (z !== undefined) this.z = z;
+            if (y !== undefined) this._y = y;
+            if (z !== undefined) this._z = z;
         }
 
         public equals(v: Vector3): boolean {
@@ -105,9 +105,9 @@ namespace Arch {
         }
 
         public copyFrom(vector: Vector3): void {
-            this._x = vector._x;
-            this._y = vector._y;
-            this._z = vector._z;
+            this._x = vector.x;
+            this._y = vector.y;
+            this._z = vector.z;
         }
 
         public setFromJson(json: any): void {
@@ -123,30 +123,30 @@ namespace Arch {
         }
 
         public add(v: Vector3): Vector3 {
-            this.x += v._x;
-            this.y += v._y;
-            this.z += v._z;
+            this._x += v.x;
+            this._y += v.y;
+            this._z += v.z;
             return this;
         }
 
         public substract(v: Vector3): Vector3 {
-            this.x -= v._x;
-            this.y -= v._y;
-            this.z -= v._z;
+            this._x -= v.x;
+            this._y -= v.y;
+            this._z -= v.z;
             return this;
         }
 
         public multiply(v: Vector3): Vector3 {
-            this.x *= v._x;
-            this.y *= v._y;
-            this.z *= v._z;
+            this._x *= v.x;
+            this._y *= v.y;
+            this._z *= v.z;
             return this;
         }
 
         public divide(v: Vector3): Vector3 {
-            this.x /= v._x;
-            this.y /= v._y;
-            this.z /= v._z;
+            this._x /= v.x;
+            this._y /= v.y;
+            this._z /= v.z;
             return this;
         }
 

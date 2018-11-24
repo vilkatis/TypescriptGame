@@ -3,9 +3,14 @@
 namespace Arch {
     export class SpriteComponent extends Component {
         private _sprite: Sprite;
+        private _width: number;
+        private _height: number;
+
         public constructor(data: SpriteComponentData) {
             super(data);
-            this._sprite = new Sprite(name, data.materialName);
+            this._width = data.width;
+            this._height = data.height;
+            this._sprite = new Sprite(name, data.materialName, this._width, this._height);
             if (!data.origin.equals(Vector3.zero)) {
                 this._sprite.origin.copyFrom(data.origin);
             }

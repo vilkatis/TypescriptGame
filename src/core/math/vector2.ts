@@ -76,6 +76,15 @@ namespace Arch {
             return new Float32Array(this.toArray());
         }
 
+        public toVector3(): Vector3 {
+            return new Vector3(this._x, this._y, 0);
+        }
+
+        public set(x?: number, y?: number): void {
+            if (x !== undefined) this._x = x;
+            if (y !== undefined) this._y = y;
+        }
+
         public setFromJson(json: any): void {
             if (json.x !== undefined) {
                 this._x = Number(json.x);
@@ -86,31 +95,37 @@ namespace Arch {
         }
 
         public copyFrom(v: Vector2): void {
-            this.x = v.x;
-            this.y = v.y;
+            this._x = v.x;
+            this._y = v.y;
         }
 
         public add(v: Vector2): Vector2 {
-            this.x += v._x;
-            this.y += v._y;
+            this._x += v.x;
+            this._y += v.y;
             return this;
         }
 
         public substract(v: Vector2): Vector2 {
-            this.x -= v._x;
-            this.y -= v._y;
+            this._x -= v.x;
+            this._y -= v.y;
             return this;
         }
 
         public multiply(v: Vector2): Vector2 {
-            this.x *= v._x;
-            this.y *= v._y;
+            this._x *= v.x;
+            this._y *= v.y;
             return this;
         }
 
         public divide(v: Vector2): Vector2 {
-            this.x /= v._x;
-            this.y /= v._y;
+            this._x /= v.x;
+            this._y /= v.y;
+            return this;
+        }
+
+        public scale(scale: number): Vector2 {
+            this._x *= scale;
+            this._y *= scale;
             return this;
         }
 
