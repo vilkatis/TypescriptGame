@@ -5,5 +5,6 @@ namespace Arch {
         public static readonly MOUSE_DOWN = 'MOUSE_DOWN';
         public static readonly COLLISION_ENTRY = 'COLLISION_ENTRY';
         public static readonly COLLISION_EXIT = 'COLLISION_EXIT';
+        public static readonly PLAYER_DEATH = 'PLAYER_DEATH';
     }
 }
